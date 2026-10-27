@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecureSys</title>
-    <link rel="stylesheet" href="resources/css/app.css">
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -22,14 +21,19 @@
     <nav id="navbar-example2" class="navbar navbar-dark bg-dark px-3 mb-3">
       <p class="navbar-brand text-white mb-0">SecureSys</p>
       <ul class="nav nav-pills">
-        <li class="nav-item"><a class="nav-link text-secondary" href="#scrollspyHeading1">Administradores</a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="#scrollspyHeading2">Usuarios</a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="#scrollspyHeading3">Empleados</a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="#scrollspyHeading4">Vehiculos</a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="#scrollspyHeading5">Camaras</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('admins.index') }}">Administradores</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('clients.index') }}">Clientes</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('employes.index') }}">Empleados</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('vehicles.index') }}">Vehiculos</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('cameras.index') }}">Camaras</a></li>
       </ul>
     </nav>
-
+    <style>
+        #navbar-example2 .nav-link:hover {
+        color: #ffffff !important;
+        background-color: #0d6efd !important;
+      }
+    </style>
 <main class="flex-grow-1">
 
     <div class="container mt-5" style="max-width: 720px;">
