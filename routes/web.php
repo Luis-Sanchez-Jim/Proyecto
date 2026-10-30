@@ -10,9 +10,9 @@ use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\VehicleController;
 
-// 1. Hace que la primera página al abrir el servidor sea el Login directamente
+// 1. Hace que la primera página al abrir el servidor sea el registro directamente
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.register');
 })->middleware('guest');
 
 // 2. Ruta del panel de control que crea Breeze por defecto al iniciar sesión

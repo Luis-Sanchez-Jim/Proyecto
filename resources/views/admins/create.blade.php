@@ -19,7 +19,7 @@
 <body class="d-flex flex-column min-vh-100">
 
     <nav id="navbar-example2" class="navbar navbar-dark bg-dark px-3 mb-3">
-      <p class="navbar-brand text-white mb-0">SecureSys</p>
+      <a class="navbar-brand text-white mb-0" href="{{ route('dashboard') }}"> SecureSys</a>
       <ul class="nav nav-pills">
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('admins.index') }}">Administradores</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('clients.index') }}">Clientes</a></li>
