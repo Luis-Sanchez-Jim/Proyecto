@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\CameraController;
-use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\ServiceController;
 
 // 1. Hace que la primera página al abrir el servidor sea el registro directamente
 Route::get('/', function () {
@@ -49,8 +49,8 @@ Route::middleware('auth')->group(function () {
         // Cámaras
         Route::resource('cameras', CameraController::class);
 
-        // Vehículos
-        Route::resource('vehicles', VehicleController::class);
+        // Servicios
+        Route::resource('services', ServiceController::class);
 
     });
 

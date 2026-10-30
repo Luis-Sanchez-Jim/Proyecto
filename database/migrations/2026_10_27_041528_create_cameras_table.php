@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('mark');
             $table->string('model');
-            $table->string('serial');
+            $table->string('serial')->unique();
             $table->timestamps();
         });
     }

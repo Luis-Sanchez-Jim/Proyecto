@@ -24,8 +24,8 @@
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('admins.index') }}">Administradores</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('clients.index') }}">Clientes</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('employes.index') }}">Empleados</a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('vehicles.index') }}">Vehiculos</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('cameras.index') }}">Camaras</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('services.index') }}">Servicios</a></li>
       </ul>
     </nav>
     <style>
@@ -57,7 +57,7 @@
     <!-- Documento -->
         <div class="col-md-6 mb-3">
         <label for="document" class="form-label">Documento</label>
-        <input type="number" id="document" name="document" min="0"
+        <input type="text" id="document" name="document" min="0"
                class="form-control @error('document') is-invalid @enderror"
                value="{{ old('document') }}">
         @error('document')

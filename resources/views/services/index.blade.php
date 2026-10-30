@@ -24,8 +24,8 @@
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('admins.index') }}">Administradores</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('clients.index') }}">Clientes</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('employes.index') }}">Empleados</a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('vehicles.index') }}">Vehiculos</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('cameras.index') }}">Camaras</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('services.index') }}">Servicios</a></li>
       </ul>
     </nav>
     <style>
@@ -38,35 +38,35 @@
     <main class="flex-grow-1">
         <div class="container mt-5">
             <div class="text-center mb-5">
-                <h1>Vehiculos</h1>
-                <p class="lead">Vehiculos Guardados en la Base de Datos.</p>
+                <h1>Servicios</h1>
+                <p class="lead">Servicios Guardados en la Base de Datos.</p>
             </div>
 
             <div class="text-end mb-3">
-            <a href="{{ route('vehicles.create') }}" class="btn btn-primary bg-blue">+ Nuevo Registro</a>
+            <a href="{{ route('services.create') }}" class="btn btn-primary bg-blue">+ Nuevo Registro</a>
             </div>
             <div class="table-responsive" style="max-height: 300px; overflow-y: auto;"> 
               <table class="table table-striped table-hover table-borderless table-primary align-middle">
                 <thead class="table-light sticky-top"> 
                   <tr>
                     <th>#</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Placas</th>
+                    <th>Serial Camara</th>
+                    <th>Cliente</th>
+                    <th>Documento</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                @forelse ($vehicles as $vehicle)
+                @forelse ($services as $service)
                   <tr class="table-primary">
-                    <td>{{ $vehicle->id }}</td>
-                    <td>{{ $vehicle->mark }}</td>
-                    <td>{{ $vehicle->model }}</td>
-                    <td>{{ $vehicle->plate }}</td>
+                    <td>{{ $service->id }}</td>
+                    <td>{{ $service->camera_serial }}</td>
+                    <td>{{ $service->client_name }}</td>
+                    <td>{{ $service->client_document }}</td>
                     <td> 
-                    <a href="{{ route('vehicles.show', $vehicle) }}" class="btn btn-sm btn-outline-secondary">Ver</a>
-                            <a href="{{ route('vehicles.edit', $vehicle) }}" class="btn btn-sm btn-outline-primary">Editar</a>
-                            <form action="{{ route('vehicles.destroy', $vehicle) }}" method="POST" class="d-inline form-eliminar">
+                    <a href="{{ route('services.show', $service) }}" class="btn btn-sm btn-outline-secondary">Ver</a>
+                            <a href="{{ route('services.edit', $service) }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                            <form action="{{ route('services.destroy', $service) }}" method="POST" class="d-inline form-eliminar">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>

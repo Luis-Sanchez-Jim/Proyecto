@@ -24,7 +24,7 @@
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('admins.index') }}">Administradores</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('clients.index') }}">Clientes</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('employes.index') }}">Empleados</a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('vehicles.index') }}">Vehiculos</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('services.index') }}">Vehiculos</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('cameras.index') }}">Camaras</a></li>
       </ul>
     </nav>
@@ -38,55 +38,51 @@
 
     <div class="container mt-5" style="max-width: 720px;">
 
-        <h1 class="mb-4">Editar Datos</h1>
+        <h1 class="mb-4">Nuevo Registro</h1>
 
-        <form action="{{ route('vehicles.update', $vehicle) }}" method="POST">
+        <form action="{{ route('services.store') }}" method="POST">
             @csrf
-            @method('PUT')
 
             <!-- Marca -->
             <div class="mb-3">
-                <label for="mark" class="form-label">Marca</label>
-                <input type="text" id="mark" name="mark"
-                       class="form-control @error('mark') is-invalid @enderror"
-                       value="{{ old('mark', $vehicle->mark) }}">
-                @error('mark')
+                <label for="mark" class="form-label">Serial de la Camara</label>
+                <input type="text" id="camera_serial" name="camera_serial"
+                       class="form-control @error('camera_serial') is-invalid @enderror"
+                       value="{{ old('camera_serial') }}">
+                @error('camera_serial')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            <!-- Modelo-->
             <div class="row">
-                <div class="col-md-6 mb-3">
-                        <label for="model" class="form-label">Modelo</label>
-                        <input type="text" id="model" name="model"
-                            class="form-control @error('model') is-invalid @enderror"
-                            value="{{ old('model',$vehicle->model) }}">
-                    @error('model')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+    <!-- Nombre de Cliente -->
+        <div class="col-md-6 mb-3">
+        <label for="client_name" class="form-label">Nombre del Cliente</label>
+        <input type="text" id="client_name" name="client_name"
+               class="form-control @error('client_name') is-invalid @enderror"
+               value="{{ old('client_name') }}">
+        @error('client_name')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
 
-                    <!-- Placas -->
-                    <div class="col-md-6 mb-3">
-                        <label for="plate" class="form-label">Edad</label>
-                        <input type="text" id="plate" name="plate" min="1"
-                            class="form-control @error('plate') is-invalid @enderror"
-                            value="{{ old('plate',$vehicle->plate) }}">
-                    @error('plate')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-            </div>
-            </div>
-
-            <a href="{{ route('vehicles.index') }}" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-success">Actualizar</button>
+    <!-- client_document -->
+    <div class="col-md-6 mb-3">
+        <label for="client_document" class="form-label">Documento del Cliente</label>
+        <input type="text" id="client_document" name="client_document"
+               class="form-control @error('client_document') is-invalid @enderror"
+               value="{{ old('client_document') }}">
+        @error('client_document')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+</div>
+            <a href="{{ route('services.index') }}" class="btn btn-outline-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Guardar</button>
 
         </form>
 
     </div>
-
 </main>
-    
     <!-- El footer -->
     <footer class="bg-light text-white bg-dark py-4 mt-auto border-top">
       <div class="container text-center">

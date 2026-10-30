@@ -33,7 +33,7 @@ class CameraController extends Controller
         $validated = $request->validate([
             'mark'        => 'required|string',
             'model' => 'required|string',
-            'serial'       => 'required|string',
+            'serial'       => 'required|string|unique:cameras,serial',
         ]);
 
         camera::create($validated);
@@ -66,7 +66,7 @@ class CameraController extends Controller
     {
         $validated = $request->validate([
             'mark'        => 'required|string',
-            'model' => 'required|string',
+            'model' => 'required|string|unique',
             'serial'       => 'required|string',
         ]);
 
