@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('document')->nullable();
+            $table->string('document')->nullable();
             $table->integer('age');
             $table->timestamps();
         });
