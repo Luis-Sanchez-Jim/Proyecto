@@ -8,6 +8,9 @@ RUN install-php-extensions \
     zip \
     opcache
 
+# Instalar Composer de forma automática desde su contenedor oficial
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 # Copiar el código del proyecto
 COPY . /app
 
