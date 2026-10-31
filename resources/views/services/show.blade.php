@@ -26,8 +26,8 @@
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('admins.index') }}">Administradores</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('clients.index') }}">Clientes</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('employes.index') }}">Empleados</a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('services.index') }}">Vehiculos</a></li>
         <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('cameras.index') }}">Camaras</a></li>
+        <li class="nav-item"><a class="nav-link text-secondary" href="{{ route('services.index') }}">Servicios</a></li>
       </ul>
     </nav>
     <style>
