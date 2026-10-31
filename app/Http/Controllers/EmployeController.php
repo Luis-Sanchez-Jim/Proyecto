@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\employe;
+use App\Models\Employe;
 use Illuminate\Http\Request;
 
 class EmployeController extends Controller
@@ -12,7 +12,7 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        $employes = employe::latest()->get();
+        $employes = Employe::latest()->get();
 
         return view('employes.index', compact('employes'));
     }
@@ -37,7 +37,7 @@ class EmployeController extends Controller
             'age'       => 'required|numeric|min:1',
         ]);
 
-        employe::create($validated);
+        Employe::create($validated);
 
         return redirect()
             ->route('employes.index')
@@ -47,7 +47,7 @@ class EmployeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(employe $employe)
+    public function show(Employe $employe)
     {
         return view('employes.show', compact('employe'));
     }
@@ -55,7 +55,7 @@ class EmployeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(employe $employe)
+    public function edit(Employe $employe)
     {
         return view('employes.edit', compact('employe'));
     }
@@ -63,7 +63,7 @@ class EmployeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, employe $employe)
+    public function update(Request $request, Employe $employe)
     {
         $validated = $request->validate([
             'name'        => 'required|string|max:255',
@@ -82,7 +82,7 @@ class EmployeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(employe $employe)
+    public function destroy(Employe $employe)
     {
        $employe->delete();
 

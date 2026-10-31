@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class camera extends Model
+class Camera extends Model
 {
     protected $fillable = [
         'mark',

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\client;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -12,7 +12,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = client::latest()->get();
+        $clients = Client::latest()->get();
 
         return view('clients.index', compact('clients'));
     }
@@ -36,7 +36,7 @@ class ClientController extends Controller
             'age'       => 'required|numeric|min:1',
         ]);
 
-        client::create($validated);
+        Client::create($validated);
 
         return redirect()
             ->route('clients.index')
@@ -46,7 +46,7 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(client $client)
+    public function show(Client $client)
     {
         return view('clients.show', compact('client'));
     }
@@ -54,7 +54,7 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(client $client)
+    public function edit(Client $client)
     {
         return view('clients.edit', compact('client'));
     }
@@ -62,7 +62,7 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, client $client)
+    public function update(Request $request, Client $client)
     {
         $validated = $request->validate([
             'name'        => 'required|string|max:255',
@@ -80,7 +80,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(client $client)
+    public function destroy(Client $client)
     {
         $client->delete();
 

@@ -14,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = service::with(['camera', 'client'])->latest()->get();
+        $services = Service::with(['camera', 'client'])->latest()->get();
 
         return view('services.index', compact('services'));
     }
@@ -24,8 +24,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $cameras = camera::orderBy('serial')->get();
-        $clients = client::whereNotNull('document')->orderBy('name')->get();
+        $cameras = Camera::orderBy('serial')->get();
+        $clients = Client::whereNotNull('document')->orderBy('name')->get();
 
         return view('services.create', compact('cameras', 'clients'));
     }
@@ -41,7 +41,7 @@ class ServiceController extends Controller
             'client_document' => 'required|string|exists:clients,document',
         ]);
 
-        service::create($validated);
+        Service::create($validated);
 
         return redirect()
             ->route('services.index')
@@ -51,7 +51,7 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(service $service)
+    public function show(Service $service)
     {
         $service->load(['camera', 'client']);
 
@@ -61,10 +61,10 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(service $service)
+    public function edit(Service $service)
     {
-        $cameras = camera::orderBy('serial')->get();
-        $clients = client::whereNotNull('document')->orderBy('name')->get();
+        $cameras = Camera::orderBy('serial')->get();
+        $clients = Client::whereNotNull('document')->orderBy('name')->get();
 
         return view('services.edit', compact('service', 'cameras', 'clients'));
     }
@@ -72,7 +72,7 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, service $service)
+    public function update(Request $request, Service $service)
     {
         $validated = $request->validate([
             'camera_serial'   => 'required|string|exists:cameras,serial',
@@ -82,14 +82,14 @@ class ServiceController extends Controller
 
         $service->update($validated);
 
-       $client = client::where('document', $validated['client_document'])->first();
+       $client = Client::where('document', $validated['client_document'])->first();
         if ($client) {
         $client->update([
             'name' => $validated['client_name']
         ]);
         }
 
-        $client = client::where('document', $validated['client_document'])->first();
+        $client = Client::where('document', $validated['client_document'])->first();
         if ($client) {
             $client->update([
             'name' => $validated['client_name']
@@ -105,7 +105,7 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(service $service)
+    public function destroy(Service $service)
     {
         $service->delete();
 

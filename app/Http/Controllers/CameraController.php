@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\camera;
+use App\Models\Camera;
 use Illuminate\Http\Request;
 
 class CameraController extends Controller
@@ -12,7 +12,7 @@ class CameraController extends Controller
      */
     public function index()
     {
-        $cameras= camera::latest()->get();
+        $cameras= Camera::latest()->get();
 
         return view('cameras.index', compact('cameras'));
     }
@@ -36,7 +36,7 @@ class CameraController extends Controller
             'serial'       => 'required|string|unique:cameras,serial',
         ]);
 
-        camera::create($validated);
+        Camera::create($validated);
 
         return redirect()
             ->route('cameras.index')
@@ -46,7 +46,7 @@ class CameraController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(camera $camera)
+    public function show(Camera $camera)
     {
         return view('cameras.show', compact('camera'));
     }
@@ -54,7 +54,7 @@ class CameraController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(camera $camera)
+    public function edit(Camera $camera)
     {
         return view('cameras.edit', compact('camera'));
     }
@@ -62,7 +62,7 @@ class CameraController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, camera $camera)
+    public function update(Request $request, Camera $camera)
     {
         $validated = $request->validate([
             'mark'        => 'required|string',
@@ -80,7 +80,7 @@ class CameraController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(camera $camera)
+    public function destroy(Camera $camera)
     {
         $camera->delete();
 
