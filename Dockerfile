@@ -26,9 +26,12 @@ COPY . /var/www/html
 # 6. Establecer permisos correctos para que Laravel pueda escribir logs y caché
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# 7. Configurar variables de Composer e instalar dependencias de producción
+# 7. Configurar variables de Composer e instalar dependencias de producción con más tiempo de tolerancia
 ENV COMPOSER_ALLOW_SUPERUSER=1
-RUN composer install --no-interaction --no-plugins --no-scripts --prefer-dist --no-dev --optimize-autoloader
+ENV COMPOSER_PROCESS_TIMEOUT=3000
+
+RUN composer config repositories.packagist composer https://packagist.org \
+    && composer install --no-interaction --no-plugins --no-scripts --prefer-dist --no-dev --optimize-autoloader
 
 # 8. Render expone el puerto 80 por defecto en contenedores Apache tradicionales
 EXPOSE 80
