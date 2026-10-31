@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\ProfileController;
 
 // Tus controladores importados
@@ -9,6 +10,15 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\ServiceController;
+
+Route::get('/migrar-base-de-datos', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        return '<h1>¡Base de datos migrada con éxito!</h1><pre>' . Artisan::output() . '</pre>';
+    } catch (\Exception $e) {
+        return '<h1>Error crítico al migrar:</h1><pre>' . $e->getMessage() . '</pre>';
+    }
+});
 
 // 1. Hace que la primera página al abrir el servidor sea el registro directamente
 Route::get('/', function () {
