@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\camera;
-use App\Models\client;
-use App\Models\service;
+use App\Models\Camera;
+use App\Models\Client;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
