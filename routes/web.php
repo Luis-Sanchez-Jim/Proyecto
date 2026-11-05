@@ -13,13 +13,15 @@ use App\Http\Controllers\ServiceController;
 
 // 1. Hace que la primera página al abrir el servidor sea el registro directamente
 Route::get('/', function () {
-    return view('auth.login');
+    return view('index');
 })->middleware('guest');
 
 // 2. Ruta del panel de control que crea Breeze por defecto al iniciar sesión
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 // 3. TODO ESTE GRUPO REQUIERE INICIAR SESIÓN (Tus rutas protegidas)
 Route::middleware('auth')->group(function () {
