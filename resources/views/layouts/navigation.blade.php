@@ -105,7 +105,7 @@
                     <x-responsive-nav-link :href="route('admins.index')" class="text-gray-300">
                         {{ __('Dev-Admin') }}
                     </x-responsive-nav-link>
-                    @endif
+                @endif
             </div>
         </div>
     </div>

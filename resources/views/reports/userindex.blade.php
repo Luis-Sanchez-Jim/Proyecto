@@ -94,7 +94,6 @@
         <div class="pt-4 pb-1 border-t border-neutral-800">
             <div class="px-4">
                 <div class="font-medium text-base text-white">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-400">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
@@ -111,6 +110,11 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+                @if(Auth::user()->role === 'admin')
+                    <x-responsive-nav-link :href="route('admins.index')" class="text-gray-300">
+                        {{ __('Dev-Admin') }}
+                    </x-responsive-nav-link>
+                @endif
             </div>
         </div>
     </div>
