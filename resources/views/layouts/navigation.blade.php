@@ -84,7 +84,6 @@
         <div class="pt-4 pb-1 border-t border-neutral-800">
             <div class="px-4">
                 <div class="font-medium text-base text-white">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-400">{{ Auth::user()->email }}</div>
             </div>
 
             <!-- ◄ CORREGIDO: Se reestructuraron las clases y etiquetas de cierre que estaban rompiendo el formulario móvil -->
@@ -101,13 +100,12 @@
                                         this.closest('form').submit();" class="text-gray-300">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
-
-                    @if(Auth::user()->role === 'admin')
+                </form>
+                @if(Auth::user()->role === 'admin')
                     <x-responsive-nav-link :href="route('admins.index')" class="text-gray-300">
                         {{ __('Dev-Admin') }}
                     </x-responsive-nav-link>
                     @endif
-                </form>
             </div>
         </div>
     </div>
