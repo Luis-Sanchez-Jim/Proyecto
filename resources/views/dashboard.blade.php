@@ -104,15 +104,13 @@
                     <h3 class="text-lg font-bold mb-4 text-white">Acciones Rápidas</h3>
                     
                     <div class="flex flex-col gap-3">
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition">
-                            Registrar Nueva Novedad
-                        </button>
-                        <button class="w-full bg-neutral-800 hover:bg-neutral-700 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition border border-neutral-700">
-                            Ver Reporte de Cámaras
-                        </button>
-                        <button class="w-full bg-neutral-800 hover:bg-neutral-700 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition border border-neutral-700">
-                            Rastreo Satelital Activo
-                        </button>
+                        <a href="{{ route('reports.create') }}" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition text-center block">
+                        Registrar Nueva Novedad
+                        </a>
+                        <a href="{{ route('reports.userindex') }}" class="w-full bg-neutral-800 hover:bg-neutral-700 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition border border-neutral-700 text-center block">
+                        Ver mis reportes
+                        </a>
+
                     </div>
                 </div>
 

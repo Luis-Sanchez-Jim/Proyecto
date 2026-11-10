@@ -10,6 +10,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ReportController;
 
 // 1. Hace que la primera página al abrir el servidor sea el registro directamente
 Route::get('/', function () {
@@ -35,6 +36,11 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])
         ->name('profile.destroy');
+    
+    Route::get('/reports/userindex', [ReportController::class, 'userindex'])->name('reports.userindex');
+    Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
+    Route::post('/reports', [ReportController::class, 'store'])->name('reports.store'); // Necesaria para que procese el formulario
+    Route::get('/reports/{report}', [ReportController::class, 'show'])->name('reports.show');   
 
 
     // Solo los administradores pueden gestionar estos módulos.
@@ -54,6 +60,9 @@ Route::middleware('auth')->group(function () {
 
         // Servicios
         Route::resource('services', ServiceController::class);
+
+        // Reportes
+        Route::resource('reports', ReportController::class)->only(['index', 'destroy']);
 
     });
 
