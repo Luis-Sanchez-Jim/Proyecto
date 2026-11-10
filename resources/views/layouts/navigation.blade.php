@@ -49,9 +49,12 @@
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
+                            <!-- Condicional de Rol para Escritorio -->
+                            @if(Auth::user()->role === 'admin')
                             <x-dropdown-link :href="route('admins.index')">
                                 {{ __('Dev-Admin') }}
                             </x-dropdown-link>    
+                            @endif   
                         </form>
                     </x-slot>
                 </x-dropdown>
@@ -99,9 +102,11 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
 
+                    @if(Auth::user()->role === 'admin')
                     <x-responsive-nav-link :href="route('admins.index')" class="text-gray-300">
                         {{ __('Dev-Admin') }}
                     </x-responsive-nav-link>
+                    @endif
                 </form>
             </div>
         </div>

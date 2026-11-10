@@ -111,13 +111,6 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
-
-                <!-- Condicional de Rol para Dispositivos Móviles -->
-                @if(Auth::user()->role === 'admin')
-                <x-responsive-nav-link :href="route('admins.index')" class="text-gray-300">
-                    {{ __('Dev-Admin') }}
-                </x-responsive-nav-link>
-                @endif
             </div>
         </div>
     </div>
@@ -187,6 +180,20 @@
             <p>{{ date('M Y') }} . Todos los derechos reservados.</p>
         </div>
     </footer>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+@if (session('success'))
+    Swal.fire({
+        icon: 'success',
+        title: @json(session('success')),
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+    });
+    @endif
+</script>
 
 </body>
 </html>

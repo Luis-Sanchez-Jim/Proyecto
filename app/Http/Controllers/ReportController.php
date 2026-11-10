@@ -48,7 +48,7 @@ class ReportController extends Controller
         Report::create($validated);
 
         return redirect()
-            ->route('dashboard')
+            ->route('reports.userindex')
             ->with('success', 'El reporte se mando correctamente.');
     }
 
