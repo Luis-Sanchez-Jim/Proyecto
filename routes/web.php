@@ -11,6 +11,7 @@ use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ReportController;
+use Illuminate\Support\Facades\Storage;
 
 // 1. Hace que la primera página al abrir el servidor sea el registro directamente
 Route::get('/', function () {
@@ -72,3 +73,22 @@ Route::middleware('auth')->group(function () {
 
 // Carga las rutas internas de Breeze (/login, /register, /logout)
 require __DIR__.'/auth.php';
+
+Route::get('/probar-b2', function () {
+    $nombreArchivo = 'evidencia-b2-' . time() . '.txt';
+    $contenido = 'Archivo guardado de forma segura en Backblaze B2 desde Laravel en Render.';
+
+    Storage::disk('b2')->put($nombreArchivo, $contenido);
+
+    $existe = Storage::disk('b2')->exists($nombreArchivo);
+    $contenidoLeido = Storage::disk('b2')->get($nombreArchivo);
+    $urlTemporal = Storage::disk('b2')->temporaryUrl($nombreArchivo, now()->addMinutes(15));
+
+    return response()->json([
+        'estado' => 'Éxito',
+        'almacenado_externamente' => $existe,
+        'archivo' => $nombreArchivo,
+        'contenido_recuperado' => $contenidoLeido,
+        'enlace_descarga_temporal' => $urlTemporal,
+    ]);
+});
