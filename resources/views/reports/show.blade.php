@@ -65,6 +65,9 @@
       <div class="container text-center">
         <p>&copy; SecureSys.</p>
         <p class="mb-0">{{ date('M Y') }} .Todos los derechos reservados.</p>
+        <a href="{{ route('privacy') }}" class="underline hover:text-gray-800">
+        Política de Tratamiento de Datos Personales (Ley 1581 de 2012)
+        </a>
       </div>
     </footer>
 

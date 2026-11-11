@@ -182,6 +182,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm space-y-1">
             <p class="text-white font-semibold">&copy; SecureSys.</p>
             <p>{{ date('M Y') }} . Todos los derechos reservados.</p>
+            <a href="{{ route('privacy') }}" class="underline hover:text-gray-800">
+            Política de Tratamiento de Datos Personales (Ley 1581 de 2012)
+            </a>
         </div>
     </footer>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
