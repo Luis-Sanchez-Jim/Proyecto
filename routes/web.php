@@ -72,7 +72,3 @@ Route::middleware('auth')->group(function () {
 
 // Carga las rutas internas de Breeze (/login, /register, /logout)
 require __DIR__.'/auth.php';
-
-Route::get('/probar-sentry', function () {
-    throw new \Exception('Prueba de Sentry en Render');
-});
