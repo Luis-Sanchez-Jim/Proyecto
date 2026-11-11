@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('index');
 })->middleware('guest');
 
+Route::view('/politica-privacidad', 'privacy')->name('privacy');
+
 // 2. Ruta del panel de control que crea Breeze por defecto al iniciar sesión
 Route::get('/dashboard', function () {
     return view('dashboard');

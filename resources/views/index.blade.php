@@ -213,7 +213,11 @@
     <!-- Barra inferior de Copyright -->
     <div class="footer__bottom">
         <p>SecureSys.Copyright 1999-2027 Todos Los Derechos Reservados.</p>
+        <a href="{{ route('privacy') }}" class="underline hover:text-gray-800">
+        Política de Tratamiento de Datos Personales (Ley 1581 de 2012)
+        </a>
     </div>
+    
 </footer>
 
 <script src="js/script.js"></script>
